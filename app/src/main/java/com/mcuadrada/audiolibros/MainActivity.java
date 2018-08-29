@@ -15,8 +15,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView rcvMain;
-    RecyclerView.LayoutManager layoutManager;
+    //RecyclerView rcvMain;
+    //RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         Aplicacion app = (Aplicacion) getApplication();
 
-        rcvMain = (RecyclerView) findViewById(R.id.rcvMain);
-        rcvMain.setAdapter(app.getAdaptadorLibro());
+        //rcvMain = (RecyclerView) findViewById(R.id.rcvMain);
+        //rcvMain.setAdapter(app.getAdaptadorLibro());
         //layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
-        layoutManager = new GridLayoutManager(this, 2);
-        rcvMain.setLayoutManager(layoutManager);
+        //layoutManager = new GridLayoutManager(this, 2);
+        //rcvMain.setLayoutManager(layoutManager);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -42,13 +42,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        app.getAdaptadorLibro().setOnItemClickListener(new View.OnClickListener() {
+        /*app.getAdaptadorLibro().setOnItemClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Seleccionado el elemento: "
                         + rcvMain.getChildAdapterPosition(v), Toast.LENGTH_SHORT).show();
             }
         });
+        */
     }
 
     @Override
