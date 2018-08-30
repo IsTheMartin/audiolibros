@@ -29,7 +29,7 @@ public class Libro {
     }
 
     public static Vector<Libro> ejemploLibros() {
-        final String SERVIDOR = "http://www.dcomg.upv.es/~^jtomas/android/audiolibros/";
+        final String SERVIDOR = "http://www.dcomg.upv.es/~jtomas/android/audiolibros/";
         Vector<Libro> libros = new Vector<Libro>();
         libros.add(new Libro("Kappa", "Akutagawa", R.drawable.kappa,
                 SERVIDOR + "kappa.mp3", Libro.G_S_XIX, false, false));

@@ -1,5 +1,6 @@
 package com.mcuadrada.audiolibros;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.mcuadrada.audiolibros.fragments.DetalleFragment;
+import com.mcuadrada.audiolibros.fragments.SelectorFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     //RecyclerView rcvMain;
@@ -22,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if ((findViewById(R.id.contenedor_pequeno) != null) && (getFragmentManager()
+                .findFragmentById(R.id.contenedor_pequeno) == null)) {
+            SelectorFragment primerFragment = new SelectorFragment();
+            getFragmentManager().beginTransaction()
+                    .add(R.id.contenedor_pequeno, primerFragment).commit();
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -72,5 +84,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void mostrarDetalle(int id) {
+        DetalleFragment detalleFragment = (DetalleFragment) getFragmentManager()
+                .findFragmentById(R.id.detalle_fragment);
+        if (detalleFragment != null) {
+            detalleFragment.ponInfoLibro(id);
+        } else {
+            DetalleFragment nuevoFragment = new DetalleFragment();
+
+            Bundle args = new Bundle();
+            args.putInt(DetalleFragment.ARG_ID_LIBRO, id);
+            nuevoFragment.setArguments(args);
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor_pequeno, nuevoFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
+
     }
 }

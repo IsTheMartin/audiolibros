@@ -12,10 +12,10 @@
 
     <fragment
         android:id="@+id/selector_fragment"
-        android:name="com.mcuadrada.audiolibros.fragments.SelectorFragment"
+        android:name="com.mcuadrada.audiolibros.fragments.DetalleFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="2" />
 </LinearLayout>
 
     <!--<android.support.v7.widget.RecyclerView

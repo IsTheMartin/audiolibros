@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.mcuadrada.audiolibros.AdaptadorLibros;
 import com.mcuadrada.audiolibros.Aplicacion;
 import com.mcuadrada.audiolibros.Libro;
+import com.mcuadrada.audiolibros.MainActivity;
 import com.mcuadrada.audiolibros.R;
 
 import java.util.Vector;
@@ -46,6 +47,7 @@ public class SelectorFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(activity, "Seleccionado el elemento: " +
                         rcvMain.getChildAdapterPosition(v), Toast.LENGTH_SHORT).show();
+                ((MainActivity) activity).mostrarDetalle(rcvMain.getChildAdapterPosition(v));
             }
         });
         return view;
